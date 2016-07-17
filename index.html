@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>bingo</title>
+  </head>
+  <body>
+    <app></app>
+
+    <button v-on:click="greet">draw</button>
+    <button v-on:click="reset">reset</button>
+
+    <h2>{{ name }}</h2>
+    <img src="{{ image_url }}" alt="{{name}}">
+
+    <h2>りれき</h2>
+    <ol>
+      <li v-for="name in draw_lists">
+        {{ name }}
+      </li>
+    </ol>
+
+    <script src="dist/build.js"></script>
+  </body>
+</html>
