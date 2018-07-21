@@ -10,12 +10,12 @@
         <div id="bingo">
           <h2 id="aiko" v-if="current_card.name" class="animated">{{ current_card.id }}: {{ current_card.name }}</h2>
           <transition
-          name="custom-classes-transition"
-          enter-active-class="animated tada"
-          leave-active-class="animated bounceOutRight"
+            name="custom-classes-transition"
+            enter-active-class="animated tada"
+            leave-active-class="animated bounceOutRight"
           >
 
-          <img v-if="current_card.name" :src="current_card.image_url" :alt="current_card.name" />
+            <img v-if="current_card.name" :src="current_card.image_url" :alt="current_card.name" />
           </transition>
         </div>
       </div>
