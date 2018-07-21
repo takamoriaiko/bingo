@@ -1,15 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-let vm = new Vue({
-  el: '#app',
-  render: h => h(App),
-  data: {
-      name: '',
-      image_url: '',
-      cards: [],
-      shuffled_cards: [],
-      draw_lists: [],
-      msg: ''
-  },
-})
+Vue.config.productionTip = false
+
+new Vue({
+  render: h => h(App)
+}).$mount('#app')
