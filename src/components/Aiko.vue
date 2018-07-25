@@ -2,8 +2,11 @@
   <div id="app">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
-    <button v-on:click="draw" class="pure-button pure-button-primary">draw</button>
-    <button v-on:click="reset" class="pure-button pure-button-primary">reset</button>
+    <div class="buttons">
+      <button v-on:click="draw" class="pure-button pure-button-primary draw" autofocus>draw</button>
+      &nbsp;
+      <button v-on:click="reset" class="pure-button">reset</button>
+    </div>
 
     <div class="pure-g">
       <div class="pure-u-md-3-5">
@@ -14,8 +17,9 @@
             enter-active-class="animated tada"
             leave-active-class="animated bounceOutRight"
           >
-
-            <img v-if="current_card.name" :src="current_card.image_url" :alt="current_card.name" />
+            <figure class="card">
+              <img v-if="current_card.name" :src="current_card.image_url" :alt="current_card.name" />
+            </figure>
           </transition>
         </div>
       </div>
@@ -68,9 +72,9 @@ export default {
       this.draw_lists.push(card);
     },
     reset: function() {
+      if (!confirm("ほんとうに？")) return;
       this.shuffled_cards = Shuffle(this.cards, { copy: true });
-      this.name = "";
-      this.image_url = "";
+      this.current_card = {};
       this.draw_lists = [];
     }
   }
@@ -97,5 +101,29 @@ body {
 }
 .pure-g {
   letter-spacing: 0;
+}
+/* ボタンをでかく */
+.buttons {
+  margin: 1em;
+}
+button {
+  font-size: 2em;
+}
+.draw {
+  width: 50vw;
+}
+/* デレステの絵を真ん中だけ表示 */
+.card {
+  max-width: 480px;
+  height: 480px;
+  overflow: hidden;
+  position: relative;
+  margin: 0;
+}
+.card img {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  max-height: 480px;
 }
 </style>
