@@ -74,8 +74,7 @@ export default {
     reset: function() {
       if (!confirm("ほんとうに？")) return;
       this.shuffled_cards = Shuffle(this.cards, { copy: true });
-      this.name = "";
-      this.image_url = "";
+      this.current_card = {};
       this.draw_lists = [];
     }
   }
